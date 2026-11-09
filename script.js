@@ -1,5 +1,7 @@
 const CONTACT_EMAIL = 'hello@discoverzimbabwe.example'; // replace before publishing
 
+document.head.append(Object.assign(document.createElement('link'), {rel: 'stylesheet', href: 'animals.css'}));
+
 const menu = document.querySelector('.menu'), nav = document.querySelector('nav');
 menu.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
@@ -11,29 +13,31 @@ document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () =
   nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); menu.textContent = '☰';
 }));
 
+// [name, emoji, category, where, description, photo]
 const animals = [
-  ['African elephant','🐘','Big Five','Hwange, Mana Pools, Matusadona','Zimbabwe has one of the largest elephant populations in the world.'],
-  ['Lion','🦁','Big Five','Hwange, Matusadona, Gonarezhou','Look for prides at waterholes at dawn and dusk.'],
-  ['Leopard','🐆','Big Five','Matobo Hills, Gonarezhou, Hwange','Elusive and mostly nocturnal; Matobo is known for its leopards.'],
-  ['Cape buffalo','🐃','Big Five','Hwange, Mana Pools, Gonarezhou','Large herds gather along rivers in the dry season.'],
-  ['Black and white rhino','🦏','Big Five','Matobo, Hwange, Imire','Protected in guarded conservancies. Matobo offers guided rhino walks.'],
-  ['Hippopotamus','🦛','Water & birds','Zambezi River, Lake Kariba, Mana Pools','Best seen from a boat or canoe.'],
-  ['Nile crocodile','🐊','Water & birds','Lake Kariba, Zambezi, Save and Runde rivers','Sunning on sandbanks and shorelines.'],
-  ['Giraffe','🦒','Plains game','Hwange, Matobo, Gonarezhou','Tall browsers that feed on acacia crowns.'],
-  ['Plains zebra','🦓','Plains game','Hwange, Matobo, Chizarira','Often seen grazing beside wildebeest and impala.'],
-  ['Sable antelope','🦌','Plains game','Hwange, Matobo, Chizarira','A striking antelope with long, curved horns.'],
-  ['Greater kudu','🦌','Plains game','Gonarezhou, Matobo, Hwange','Spiral-horned antelope of woodland and hills.'],
-  ['Impala','🦌','Plains game','Most national parks','Graceful and abundant; the most common antelope.'],
-  ['Wildebeest','🐂','Plains game','Hwange, Matobo','Seen in herds on open grassland.'],
-  ['Wild dog','🐕','Predators','Hwange, Mana Pools, Gonarezhou','One of Africa\'s most endangered predators. Zimbabwe is a stronghold.'],
-  ['Cheetah','🐆','Predators','Matobo, Gonarezhou, private conservancies','Fast hunters of open country.'],
-  ['Spotted hyena','🐺','Predators','Hwange, Matusadona','Active at night; listen for their calls.'],
-  ['Warthog & baboon','🐗','Plains game','Everywhere','Easy to spot on drives and walks.'],
-  ['African fish eagle','🦅','Water & birds','Lake Kariba, Zambezi, Victoria Falls','Its call is the sound of the Zambezi.'],
-  ['Southern ground hornbill','🐦','Water & birds','Hwange, Gonarezhou','A large, endangered bird that walks the grasslands.'],
-  ['Lilac-breasted roller','🐦','Water & birds','Hwange, Mana Pools, Matusadona','One of Africa\'s most colourful birds.'],
-  ['Nyala & bushbuck','🦌','Plains game','Mana Pools, Gonarezhou','Shy antelope of riverine forest.'],
-  ['Eland','🦌','Plains game','Hwange, Matobo, Gonarezhou','The largest antelope in Africa.']
+  ['African elephant','🐘','Big Five','Hwange, Mana Pools, Matusadona','Zimbabwe has one of the largest elephant populations in the world.','elephant.jpg'],
+  ['Lion','🦁','Big Five','Hwange, Matusadona, Gonarezhou','Look for prides at waterholes at dawn and dusk.','lion.jpg'],
+  ['Leopard','🐆','Big Five','Matobo Hills, Gonarezhou, Hwange','Elusive and mostly nocturnal; Matobo is known for its leopards.','leopard.jpg'],
+  ['Cape buffalo','🐃','Big Five','Hwange, Mana Pools, Gonarezhou','Large herds gather along rivers in the dry season.','buffalo.jpg'],
+  ['Black and white rhino','🦏','Big Five','Matobo, Hwange, Imire','Protected in guarded conservancies. Matobo offers guided rhino walks.','rhino.jpg'],
+  ['Hippopotamus','🦛','Water & birds','Zambezi River, Lake Kariba, Mana Pools','Best seen from a boat or canoe.','hippo.jpg'],
+  ['Nile crocodile','🐊','Water & birds','Lake Kariba, Zambezi, Save and Runde rivers','Sunning on sandbanks and shorelines.','crocodile.jpg'],
+  ['Giraffe','🦒','Plains game','Hwange, Matobo, Gonarezhou','Tall browsers that feed on acacia crowns.','giraffe.jpg'],
+  ['Plains zebra','🦓','Plains game','Hwange, Matobo, Chizarira','Often seen grazing beside wildebeest and impala.','zebra.jpg'],
+  ['Sable antelope','🦌','Plains game','Hwange, Matobo, Chizarira','A striking antelope with long, curved horns.','sable.jpg'],
+  ['Greater kudu','🦌','Plains game','Gonarezhou, Matobo, Hwange','Spiral-horned antelope of woodland and hills.','kudu.jpg'],
+  ['Impala','🦌','Plains game','Most national parks','Graceful and abundant; the most common antelope.','impala.jpg'],
+  ['Wildebeest','🐂','Plains game','Hwange, Matobo','Seen in herds on open grassland.','wildebeest.jpg'],
+  ['Wild dog','🐕','Predators','Hwange, Mana Pools, Gonarezhou','One of Africa\'s most endangered predators. Zimbabwe is a stronghold.','wilddog.jpg'],
+  ['Cheetah','🐆','Predators','Matobo, Gonarezhou, private conservancies','Fast hunters of open country.','cheetah.jpg'],
+  ['Spotted hyena','🐺','Predators','Hwange, Matusadona','Active at night; listen for their calls.','hyena.jpg'],
+  ['Warthog','🐗','Plains game','Hwange, Mana Pools, Matobo','Easy to spot on drives, trotting with tails held high.','warthog.jpg'],
+  ['Olive baboon','🐒','Plains game','Mana Pools, Hwange, Matobo','Clever, social and always watching from the roadside.','baboon.jpg'],
+  ['African fish eagle','🦅','Water & birds','Lake Kariba, Zambezi, Victoria Falls','Its call is the sound of the Zambezi.','eagle.jpg'],
+  ['Southern ground hornbill','🐦','Water & birds','Hwange, Gonarezhou','A large, endangered bird that walks the grasslands.','hornbill.jpg'],
+  ['Lilac-breasted roller','🐦','Water & birds','Hwange, Mana Pools, Matusadona','One of Africa\'s most colourful birds.','roller.jpg'],
+  ['Nyala & bushbuck','🦌','Plains game','Mana Pools, Gonarezhou','Shy antelope of riverine forest.','bushbuck.jpg'],
+  ['Eland','🦌','Plains game','Hwange, Matobo, Gonarezhou','The largest antelope in Africa.','eland.jpg']
 ];
 const parks = [
   ['Hwange National Park','Zimbabwe\'s largest park, with huge elephant herds and waterhole viewing.'],
@@ -44,7 +48,7 @@ const parks = [
   ['Victoria Falls National Park','Birdlife, bush walks and elephant crossings near the falls.']
 ];
 const sites = [
-  ['Victoria Falls','Hwange region (Zambezi)','About 1.7 km wide and over 100 m high, the Mosi-oa-Tunya, or "Smoke That Thunders", is one of the world\'s largest waterfalls and a UNESCO site. Try the rainforest walk, a sunset cruise or a helicopter flight.','Waterfall'],
+  ['Victoria Falls','Hwange region (Zambezi)','About 1.7 km wide and over 100 m high, the Mosi-oa-Tunya, or "Smoke That Thunders", is one of the world\'s largest waterfalls and a UNESCO site. Try the rainforest walk, a sunset cruise or a helicopter flight.','Waterfall',[['victoria-falls.jpg','Victoria Falls from the air','The Zambezi pours into the gorge along a 1.7 km edge. A helicopter flight is the best way to see the whole sweep.'],['victoria-falls-bridge.jpg','Victoria Falls Bridge','The 1905 arch bridge spans the Batoka Gorge on the border between Zimbabwe and Zambia. Spray from the falls often paints a rainbow beneath it.']]],
   ['Great Zimbabwe','Masvingo','The remains of a medieval stone city built by the ancestors of the Shona between the 11th and 15th centuries. The Great Enclosure and Hill Complex are UNESCO-listed and gave the country its name.','Heritage'],
   ['Mutarazi Falls','Eastern Highlands (Nyanga)','At about 760 m, Mutarazi is the highest waterfall in Zimbabwe and among the tallest in Africa. Walk the cliff-edge trail and enjoy views over the gorge.','Waterfall'],
   ['Matobo Hills','Near Bulawayo','Balancing granite boulders, San rock paintings and the grave of Cecil Rhodes at World\'s View. A UNESCO site of deep spiritual meaning.','Hills'],
@@ -81,18 +85,51 @@ const btn = (d, label) => `<button class="reserve-btn mini" data-dest="${esc(d)}
 
 const cats = ['All', ...new Set(animals.map(a => a[2]))];
 const chips = document.querySelector('.chips'), aGrid = document.getElementById('animal-grid');
+let shown = [];
 function showAnimals(cat) {
   aGrid.innerHTML = '';
-  animals.filter(a => cat === 'All' || a[2] === cat).forEach(a => aGrid.append(el(
-    `<article class="tile"><span class="emoji" aria-hidden="true">${a[1]}</span><small>${esc(a[2])}</small><h4>${esc(a[0])}</h4><p>${esc(a[4])}</p><p class="where"><b>Where:</b> ${esc(a[3])}</p></article>`)));
+  shown = animals.filter(a => cat === 'All' || a[2] === cat);
+  shown.forEach((a, i) => {
+    const img = a[5];
+    aGrid.append(el(img
+      ? `<article class="tile animal" data-i="${i}" tabindex="0" role="button" aria-label="View ${esc(a[0])} photo"><div class="pic"><img src="images/${img}" alt="${esc(a[0])}" loading="lazy"><span class="zoom" aria-hidden="true">⤢</span><div class="cap"><small>${esc(a[2])}</small><h4>${esc(a[0])}</h4></div></div><div class="body"><p>${esc(a[4])}</p><p class="where"><b>Where:</b> ${esc(a[3])}</p></div></article>`
+      : `<article class="tile animal noimg" data-i="${i}"><span class="emoji" aria-hidden="true">${a[1]}</span><small>${esc(a[2])}</small><h4>${esc(a[0])}</h4><p>${esc(a[4])}</p><p class="where"><b>Where:</b> ${esc(a[3])}</p></article>`));
+  });
   chips.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.textContent === cat)));
 }
 cats.forEach(c => { const b = el(`<button type="button">${c}</button>`); b.onclick = () => showAnimals(c); chips.append(b); });
 showAnimals('All');
 
+// Photo lightbox
+const lb = el(`<dialog id="photo" aria-label="Wildlife photo"><button class="x" aria-label="Close">×</button><div class="lb"><img alt=""><div class="info"></div></div><div class="nav"><button class="prev" aria-label="Previous photo">‹</button><button class="next" aria-label="Next photo">›</button></div></dialog>`);
+document.body.append(lb);
+let cur = 0, list = [];
+function showPhoto(k) {
+  cur = (k + list.length) % list.length;
+  const a = list[cur];
+  const img = lb.querySelector('img'); img.src = 'images/' + a.img; img.alt = a.name;
+  const links = a.reserve ? [[a.reserve]] : parks.filter(p => a.where.split(',').some(t => p[0].includes(t.trim()))).slice(0, 3);
+  lb.querySelector('.info').innerHTML = `<p class="eyebrow">${esc(a.cat).toUpperCase()}</p><h3>${esc(a.name)}</h3><p>${esc(a.desc)}</p><p><b>${a.reserve ? 'Where' : 'Where to see it'}:</b> ${esc(a.where)}</p><div class="btns">${links.map(p => `<button data-park="${esc(p[0])}">Reserve ${esc(p[0].replace(' National Park',''))} ↗</button>`).join('')}</div>`;
+}
+aGrid.addEventListener('click', e => {
+  const t = e.target.closest('.animal:not(.noimg)'); if (!t) return;
+  const withImg = shown.filter(a => a[5]); list = withImg.map(a => ({img: a[5], name: a[0], cat: a[2], desc: a[4], where: a[3]})); showPhoto(withImg.indexOf(shown[+t.dataset.i])); lb.showModal();
+});
+aGrid.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.animal:not(.noimg)')) { e.preventDefault(); e.target.click(); } });
+lb.querySelector('.x').onclick = () => lb.close();
+lb.querySelector('.prev').onclick = () => showPhoto(cur - 1);
+lb.querySelector('.next').onclick = () => showPhoto(cur + 1);
+lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+lb.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') showPhoto(cur - 1); if (e.key === 'ArrowRight') showPhoto(cur + 1); });
+lb.querySelector('.info').addEventListener('click', e => {
+  const b = e.target.closest('[data-park]'); if (!b) return;
+  lb.close(); openReserve(b.dataset.park, null);
+});
+
 parks.forEach(p => document.getElementById('park-grid').append(el(
   `<article class="tile park"><h4>${esc(p[0])}</h4><p>${esc(p[1])}</p>${btn(p[0], 'Reserve a visit')}</article>`)));
-sites.forEach(s => document.getElementById('site-grid').append(el(
+sites.forEach((s, si) => document.getElementById('site-grid').append(el(
+  s[4] ? `<article class="tile site gal" data-s="${si}" tabindex="0" role="button" aria-label="View ${esc(s[0])} photos"><div class="pic"><img src="images/${s[4][0][0]}" alt="${esc(s[4][0][1])}" loading="lazy"><span class="zoom" aria-hidden="true">⤢</span><span class="count">${s[4].length} photos</span></div><div class="body"><small>${esc(s[3])} · ${esc(s[1])}</small><h4>${esc(s[0])}</h4><p>${esc(s[2])}</p>${btn(s[0])}</div></article>` :
   `<article class="tile site"><small>${esc(s[3])} · ${esc(s[1])}</small><h4>${esc(s[0])}</h4><p>${esc(s[2])}</p>${btn(s[0])}</article>`)));
 tribes.forEach(t => document.getElementById('tribe-grid').append(el(
   `<article class="tile"><small>${esc(t[1])}</small><h4>${esc(t[0])}</h4><p>${esc(t[2])}</p><p class="where"><b>Experience:</b> ${esc(t[3])}</p>${btn(t[0] + ' community visit')}</article>`)));
@@ -121,3 +158,12 @@ form.addEventListener('submit', e => {
   location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Reservation request: ' + f.get('dest'))}&body=${encodeURIComponent(body)}`;
   dlg.close();
 });
+
+const siteGrid = document.getElementById('site-grid');
+siteGrid.addEventListener('click', e => {
+  const t = e.target.closest('.gal'); if (!t || e.target.closest('.reserve-btn')) return;
+  const s = sites[+t.dataset.s];
+  list = s[4].map(p => ({img: p[0], name: p[1], cat: s[3], desc: p[2], where: s[0] + ', ' + s[1], reserve: s[0]}));
+  showPhoto(0); lb.showModal();
+});
+siteGrid.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.gal')) { e.preventDefault(); e.target.click(); } });

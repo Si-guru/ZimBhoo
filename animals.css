@@ -1,0 +1,35 @@
+.animals{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.tile.animal,.tile.gal{padding:0;overflow:hidden;cursor:pointer;position:relative;transition:transform .3s,box-shadow .3s}
+.tile.animal:hover,.tile.gal:hover,.tile.animal:focus-visible,.tile.gal:focus-visible{transform:translateY(-6px);box-shadow:0 18px 34px rgba(30,42,28,.22)}
+.tile.animal .pic,.tile.gal .pic{position:relative;aspect-ratio:4/5;overflow:hidden;background:#30442e}
+.tile.animal .pic,.tile.gal .pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tile.animal:hover,.tile.gal:hover .pic img{transform:scale(1.09)}
+.tile.animal .pic,.tile.gal .pic:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,24,14,.88),transparent 55%)}
+.tile.animal .cap{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;color:#fff}
+.tile.animal .cap small{color:#e4bd77}
+.tile.animal .cap h4{color:#fff;font-size:21px;margin:2px 0 0}
+.tile.animal .zoom,.tile.gal .zoom{position:absolute;top:12px;right:12px;z-index:1;background:rgba(243,239,229,.92);color:#30442e;border-radius:50%;width:32px;height:32px;display:grid;place-items:center;font-size:15px;opacity:0;transform:scale(.7);transition:.25s}
+.tile.animal:hover,.tile.gal:hover .zoom,.tile.animal:focus-visible,.tile.gal:focus-visible .zoom{opacity:1;transform:none}
+.tile.animal .body,.tile.gal .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px}
+.tile.animal.noimg{padding:22px}
+.tile.animal.noimg .pic{display:none}
+#photo{max-width:900px;width:94%;background:#1b261b;color:#f3efe5;overflow:hidden}
+#photo .lb{display:grid;grid-template-columns:1.05fr 1fr}
+#photo .lb img{width:100%;height:100%;max-height:82vh;object-fit:cover;display:block;animation:zin .5s ease}
+#photo .info{padding:34px 30px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+#photo .info h3{font:700 36px/1.1 'Playfair Display';margin:0}
+#photo .info p{font-size:14px;line-height:1.8;color:#e5e2d8;margin:0}
+#photo .info .eyebrow{margin:0}
+#photo .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+#photo .btns button{background:#c79555;border:0;color:#1e291d;padding:11px 16px;border-radius:30px;font-weight:700;font-size:12px}
+#photo .btns button:hover{background:#e2bc79}
+#photo .nav{position:absolute;bottom:14px;right:16px;display:flex;gap:8px;z-index:2}
+#photo .nav button,#photo .x{background:rgba(243,239,229,.92);border:0;border-radius:50%;width:38px;height:38px;font-size:18px;color:#30442e}
+#photo .x{position:absolute;top:12px;right:12px;z-index:2}
+@keyframes zin{from{transform:scale(1.12);opacity:.4}to{transform:none;opacity:1}}
+@media(max-width:700px){#photo .lb{grid-template-columns:1fr}#photo .lb img{max-height:42vh}#photo .info{padding:22px}#photo .info h3{font-size:28px}}
+@media(prefers-reduced-motion:reduce){.tile.animal,.tile.animal .pic,.tile.gal .pic img,#photo .lb img{transition:none;animation:none}}
+.tile.gal .pic{aspect-ratio:4/3}
+.tile.gal .pic:after{display:none}
+.tile.gal .count{position:absolute;left:12px;bottom:12px;background:rgba(30,42,28,.85);color:#f3efe5;font-size:11px;font-weight:700;padding:5px 11px;border-radius:30px}
+.scenery{background-image:linear-gradient(0deg,rgba(0,0,0,0),rgba(0,0,0,0)),url('images/victoria-falls.jpg')!important}
